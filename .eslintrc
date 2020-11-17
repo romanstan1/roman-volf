@@ -1,0 +1,76 @@
+{
+  "root": true,
+  "plugins": [
+    "prettier",
+    "better-styled-components"
+  ],
+  "extends": [
+    "react-app",
+    "airbnb",
+    "prettier"
+  ],
+
+  "rules": {
+    "object-curly-spacing": [
+      "warn",
+      "always"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      2,
+      "double"
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "no-redeclare": 2,
+    "no-undef": 2,
+    "no-shadow": 2,
+    "no-loop-func": 2,
+    "jsx-a11y/label-has-associated-control": 0,
+    "import/named": 2,
+    "max-len": [
+      "warn",
+      {
+        "code": 80,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreComments": true
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "react/jsx-key": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.js",
+          "**/*.test.jsx",
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "src/tests/**/*"
+        ]
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-boolean-value": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/destructuring-assignment": "off"
+  }
+}
