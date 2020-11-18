@@ -1,30 +1,30 @@
+import { createGlobalStyle } from "styled-components";
 import FONTS, { base, loadFonts } from "./fonts";
-import COLORS, { hexToRGBA, cssColor } from "./colors"; 
+import COLORS from "./colors"; 
+// import COLORS, { hexToRGBA, cssColor } from "./colors"; 
 
-export default `
-
+export default createGlobalStyle`
   ${loadFonts}
 
   html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: ${FONTS.monumentRegular};
     font-size: ${base}px;
-    line-height: 26px;
-    background-color: ${COLORS.yellow};
-    overflow-x: hidden;
+    transition: background-color 1s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: ${FONTS.spartan}, sans-serif;
+
+    background-color: ${COLORS.white};
   }
 
-  body {
-    background-color: ${COLORS.white};
+  input, textarea {
+    font-family: ${FONTS.spartan}, sans-serif;
   }
 
   * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
   }
 
   a {
@@ -33,15 +33,17 @@ export default `
     text-decoration: none;
   }
 
-  h1, h2, h3, h4, h5, p {
+  h1, h2, h3, h4, h5 {
     margin: 0;
     padding: 0;
+    font-weight: normal;
   }
 
   button {
     padding: 0;
     background-color: transparent;
     border: none;
+    font-family: ${FONTS.spartan}, sans-serif;
   }
 
   ul, ol {
@@ -55,14 +57,16 @@ export default `
     margin: 0;
     padding: 0;
   }
-
-  ::selection {
-    background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
-    color: ${COLORS.white};
-  }
-
-  ::-moz-selection {
-    background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
-    color: ${COLORS.white};
-  }
 `;
+
+
+//   ::selection {
+//     background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
+//     color: ${COLORS.white};
+//   }
+
+//   ::-moz-selection {
+//     background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
+//     color: ${COLORS.white};
+//   }
+// `;
