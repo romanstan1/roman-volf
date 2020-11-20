@@ -1,26 +1,23 @@
 import { createGlobalStyle } from "styled-components";
-import FONTS, { base, loadFonts } from "./fonts";
 import COLORS from "./colors"; 
 // import COLORS, { hexToRGBA, cssColor } from "./colors"; 
 
 export default createGlobalStyle`
-  ${loadFonts}
-
+ 
   html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-size: ${base}px;
+    font-size: 16px;
     transition: background-color 1s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: ${FONTS.spartan}, sans-serif;
-
+    font-family: 'Spartan';
     background-color: ${COLORS.white};
   }
 
   input, textarea {
-    font-family: ${FONTS.spartan}, sans-serif;
+    font-family: 'Spartan';
   }
 
   * {
@@ -43,7 +40,7 @@ export default createGlobalStyle`
     padding: 0;
     background-color: transparent;
     border: none;
-    font-family: ${FONTS.spartan}, sans-serif;
+    font-family: 'Spartan';
   }
 
   ul, ol {
@@ -54,6 +51,10 @@ export default createGlobalStyle`
 
   li {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  h1, h2, h3, h4, p {
     margin: 0;
     padding: 0;
   }
