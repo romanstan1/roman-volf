@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Section from "./Section";
 import COLORS from "../styles/colors"; 
 import BREAKPOINTS from "../styles/breakpoints";
+import { P2 } from "./Text";
 
 const Wrapper = styled.footer`
   background: ${COLORS.black};
@@ -12,7 +13,7 @@ const Wrapper = styled.footer`
   }
 `;
 
-const Text = styled.p`
+const Text = styled(P2)`
   color: ${COLORS.white};
   text-align: center;
 `;

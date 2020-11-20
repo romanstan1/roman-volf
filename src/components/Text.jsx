@@ -2,7 +2,8 @@ import styled from "styled-components";
 import BREAKPOINTS from "../styles/breakpoints";
 
 export const H1 = styled.h1`
- font-size: 50px;
+  padding-top: 100px;
+  font-size: 50px;
  @media screen and (max-width: ${BREAKPOINTS.large}px) {
     font-size: 36px;
   }

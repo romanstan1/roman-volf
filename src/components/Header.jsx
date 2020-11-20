@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { Link, useLocation } from "react-router-dom";
 
 import Section from "./Section";
 
@@ -28,6 +28,9 @@ const NavLink = styled(Link)`
   padding: 0 5px;
   margin: 0 20px;
   cursor: pointer;
+  ${(props) => props.active && 
+    css`text-decoration: underline;`
+  }
   &:hover {
     text-decoration: underline;
   }
@@ -36,17 +39,21 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Header = () => {
-  return (
+const Header = (props) => {
+  const { pathname } = useLocation();
+  const isActive = (val) => {
+    return pathname === `/${val}`? "true" : undefined; 
+  };
+  return  (
     <Section>
       <Wrapper>
         <Logo to="/">
           Roman Volf
         </Logo>
         <Nav>
-          <NavLink to="/">Works</NavLink>
-          <NavLink to="/statement">Statement</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink active={isActive("")} to="/">Works</NavLink>
+          <NavLink active={isActive("statement")} to="/statement">Statement</NavLink>
+          <NavLink active={isActive("contact")} to="/contact">Contact</NavLink>
         </Nav>
       </Wrapper>
     </Section>
