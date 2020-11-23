@@ -4,11 +4,7 @@ import COLORS from "../styles/colors";
 import BREAKPOINTS from "../styles/breakpoints";
 
 import Section from "./Section";
-import { H1,H2, H3, P1 } from "./Text";
-
-const Heading = styled(H1)`
-  /* margin-top: 40px; */
-`;
+import { H1, P1 } from "./Text";
 
 const Subheading = styled(P1)`
   color: ${COLORS.black02};
@@ -35,8 +31,10 @@ const Email = styled.a`
 const ContactPage = () => {
   return (
     <Section minHeight center>
-      <Heading>Get in touch</Heading>
-      <Subheading>My work is available on direct sale, or by commission. <br />Please don’t hesitate to contact me with any questions or comments.
+      <H1>Get in touch</H1>
+      <Subheading>
+        My work is available on direct sale, or by commission. <br />
+        Please don’t hesitate to contact me with any questions or comments.
       </Subheading>
       <Email
         href="mailto:"
