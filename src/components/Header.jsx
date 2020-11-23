@@ -35,11 +35,11 @@ const NavLink = styled(Link)`
     text-decoration: underline;
   }
   &:last-of-type {
-    margin-right: 5;
+    margin-right: 5px;
   }
 `;
 
-const Header = (props) => {
+const Header = () => {
   const { pathname } = useLocation();
   const isActive = (val) => {
     return pathname === `/${val}`? "true" : undefined; 

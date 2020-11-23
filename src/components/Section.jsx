@@ -9,7 +9,16 @@ const Wrapper = styled.div`
   ${(props) => props.minHeight && 
     css`
       /* height of page minus header and footer  */
-      min-height: calc(100vh - 70px - 250px);
+      min-height: calc(100vh - 70px - 150px);
+    `
+  }
+  ${(props) => props.center && 
+    css`
+      /* height of page minus header and footer  */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     `
   }
   @media screen and (max-width: ${BREAKPOINTS.large}px) {
@@ -17,15 +26,15 @@ const Wrapper = styled.div`
     ${(props) => props.minHeight && 
       css`
         /* height of page minus header and footer  */
-        min-height: calc(100vh - 70px - 150px);
+        min-height: calc(100vh - 70px - 100px);
       `
     }
   }
 `;
 
-const Section = ({ children, className, minHeight }) => {
+const Section = ({ children, className, minHeight, center }) => {
   return (
-    <Wrapper className={className} minHeight={minHeight}>
+    <Wrapper className={className} minHeight={minHeight} center={center}>
       {children}
     </Wrapper>
   );

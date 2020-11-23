@@ -13,7 +13,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Spartan';
-    background-color: ${COLORS.white};
+    background-color: ${COLORS.beige};
   }
 
   input, textarea {

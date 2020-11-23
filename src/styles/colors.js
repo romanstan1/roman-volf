@@ -26,8 +26,12 @@ export const cssColor = color =>
 const COLORS = {
   white: "#FFFFFF",
   black: "#000000",
+  black02: "#292828",
   grey: "#F5F5F5",
+  grey02: "#adb0be",
+  grey03: "#cccbc8",
   yellow: "#FFC238",
+  beige: "#f3f2ef",
 };
 
 export const colorFinder = color => COLORS[color];
