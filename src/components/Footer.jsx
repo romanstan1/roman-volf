@@ -3,31 +3,37 @@ import styled from "styled-components";
 import Section from "./Section";
 import COLORS from "../styles/colors"; 
 import BREAKPOINTS from "../styles/breakpoints";
-import { P2 } from "./Text";
+import { P3 } from "./Text";
 
 const Wrapper = styled.footer`
   /* background: ${COLORS.black}; */
   /* border-top: 1px solid ${COLORS.grey02}; */
-  height: 150px;
+  height: 80px;
   @media screen and (max-width: ${BREAKPOINTS.large}px) {
-    height: 150px;
+    /* height: 150px; */
   }
 `;
 
-const Text = styled(P2)`
+const Left = styled(P3)`
   color: ${COLORS.grey02};
-  text-align: center;
-  margin: 4px 10px;
+  text-align: left;
+  margin: 4px 15px 4px 0px;
+`;
+
+const Right = styled(P3)`
+  color: ${COLORS.grey02};
+  text-align: right;
+  margin: 4px 0px 4px 15px;
 `;
 
 const StyledSection = styled(Section)`
   display: flex;
-  height: 150px;
+  height: 80px;
   justify-content: center;
   align-items: center;
   border-top: 1px solid ${COLORS.grey03};
   @media screen and (max-width: ${BREAKPOINTS.large}px) {
-    height: 100px;
+    /* height: 100px; */
   }
 `;
 const TextWrap = styled.div`
@@ -48,12 +54,12 @@ const Footer = () => {
     <Wrapper>
       <StyledSection center>
         <TextWrap>
-          <Text>
-            All images copyright Roman Volf.
-          </Text>
-          <Text>
-            All rights reserved.
-          </Text>
+          <Left>
+            ©2020 Roman Volf
+          </Left>
+          <Right>
+            hello@romanvolf.com
+          </Right>
         </TextWrap>
       </StyledSection>
     </Wrapper>

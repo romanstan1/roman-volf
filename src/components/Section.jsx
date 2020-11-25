@@ -9,12 +9,17 @@ const Wrapper = styled.div`
   ${(props) => props.minHeight && 
     css`
       /* height of page minus header and footer  */
-      min-height: calc(100vh - 70px - 150px);
+      min-height: calc(100vh - 70px - 80px);
     `
   }
   ${(props) => props.bottomPadding && 
     css`
-      padding-bottom: 100px;
+      padding-bottom: 130px;
+    `
+  }
+  ${(props) => props.topPadding && 
+    css`
+      padding-top: 40px;
     `
   }
   ${(props) => props.center && 
@@ -31,19 +36,21 @@ const Wrapper = styled.div`
     ${(props) => props.minHeight && 
       css`
         /* height of page minus header and footer  */
-        min-height: calc(100vh - 70px - 100px);
+        /* min-height: calc(100vh - 70px - 100px); */
       `
     }
   }
 `;
 
-const Section = ({ children, className, minHeight, center, bottomPadding }) => {
+const Section = ({ 
+  children, className, minHeight, center, bottomPadding, topPadding }) => {
   return (
     <Wrapper
       className={className}
       minHeight={minHeight}
       center={center} 
       bottomPadding={bottomPadding}
+      topPadding={topPadding}
     >
       {children}
     </Wrapper>

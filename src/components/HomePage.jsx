@@ -1,82 +1,96 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled, { css, keyframes } from "styled-components";
 import Section from "./Section";
-import { P1 , P2 } from "./Text";
+import Carousel from "./Carousel";
 import { greenBlack, vividOrange, pastelOne, pastelTwo } from "../images";
+import COLORS, { hexToRGBA, cssColor } from "../styles/colors"; 
 
-const CarouselInner = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-grow: 0;
-  height: 420px;
+const animation = keyframes`
+  0%{
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0.4;
+  }
+  100%{
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+`;
+
+const ModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 20;
   width: 100%;
-  overflow-x: scroll;
-  img {
-    margin: 0 20px;
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:last-of-type {
-      margin-right: 50px;
-      padding-right: 50px;
-    }
-  }
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-`;
-
-const CarouselWrapper = styled.div`
-  /* display: flex; */
-`;
-
-const Landscape = styled.img`
-  width:${(props => props.width ? props.width : 400)}px;
-`;
-
-const Portrait = styled.img`
-  height:${(props => props.height ? props.height : 400)}px;
-`;
-
-const Name = styled(P1)`
-  line-height: 2rem;
-`;
-
-const Size = styled(P2)`
-  line-height: 2rem;
+  height: 100%;
+  background: ${cssColor(hexToRGBA(COLORS.white, 0.7))};
+  cursor: pointer;
 `;
 
 
+const ModalImg = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 70vh;
+  opacity: 0.4;
+  transform: translate(-50%, -50%) scale(0.7);
+  ${props =>
+    props.show &&
+    css`
+      animation: ${animation} 0.2s ease;
+      animation-fill-mode: forwards;
+    `};
+`;
 
-const Carousel = ({ images, name, size }) => {
-  return (
-    <CarouselWrapper>
-      <CarouselInner>
-        {images.map(item => {
-          if(item.orient === "portrait") {
-            return <Portrait src={item.image} height={item.height} key={item.image} alt="" />;
-          }
-          return <Landscape src={item.image} width={item.width} key={item.image} alt="" />;
-        })}
-      </CarouselInner>
-      <Name>Name goes here</Name>
-      <Size>Size goes here</Size>
-
-    </CarouselWrapper>
-  );
-};
 
 const Home = () => {
+  const [modalImg, setModalImg] = useState(null);
+  const [startAnimation, setStartAnimation] = useState(false);
+  
+  useEffect(()=>{
+    if(modalImg) {
+      setTimeout(() => {
+        setStartAnimation(true);
+      }, 0);
+    } else {
+      setStartAnimation(false);
+    }
+  },[modalImg]);
+
   return (
-    <Section minHeight bottomPadding>
-      <Carousel images={greenBlack} /> 
-      <Carousel images={pastelOne} /> 
-      <Carousel images={pastelTwo} /> 
-      <Carousel images={vividOrange} /> 
-    </Section>
+    <>
+      {modalImg && 
+        <ModalWrapper show={startAnimation} onClick={() => setModalImg(null)}>
+          <ModalImg show={startAnimation} src={modalImg} />
+        </ModalWrapper>}
+      <Section minHeight bottomPadding topPadding>
+        <Carousel
+          setModalImg={setModalImg}
+          images={greenBlack} 
+          name="Black Green"
+          size="Oil & chalk on canvas. 70cm x 70cm"
+        /> 
+        <Carousel
+          setModalImg={setModalImg} 
+          images={pastelOne}
+          name="Lemon Ultramarine"
+          size="Oil on canvas. 100cm x 100cm"
+        /> 
+        <Carousel
+          setModalImg={setModalImg}
+          images={pastelTwo}
+          name="Peach Green"
+          size="Oil & chalk on canvas. 100cm x 100cm"
+        /> 
+        <Carousel
+          setModalImg={setModalImg}
+          images={vividOrange}
+          name="Vivid Primary"
+          size="Oil & chalk on canvas. 100cm x 100cm"
+        /> 
+      </Section>
+    </>
   );
 };
 
