@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import COLORS from "./colors"; 
-// import COLORS, { hexToRGBA, cssColor } from "./colors"; 
+import COLORS, { hexToRGBA, cssColor } from "./colors"; 
+import slickSlider from "./slick-slider";
 
 export default createGlobalStyle`
  
@@ -14,6 +14,28 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Spartan';
     background-color: ${COLORS.beige};
+      /* The emerging W3C standard
+      that is currently Firefox-only */
+    * {
+      scrollbar-width: 5px;
+    }
+
+    /* Works on Chrome/Edge/Safari */
+    *::-webkit-scrollbar {
+      width: 5px;
+    }
+    *::-webkit-scrollbar-track {
+      background: ${COLORS.beige};
+    }
+    *::-webkit-scrollbar-thumb {
+      background-color:  ${COLORS.black};
+      border-radius: 0px;
+      border: 0px solid ${COLORS.black};
+    }
+  }
+  html {
+    overflow-y: scroll;
+    background-color: ${COLORS.yellow};
   }
 
   input, textarea {
@@ -58,16 +80,16 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  ::selection {
+    background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
+    color: ${COLORS.black};
+  }
+
+  ::-moz-selection {
+    background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
+    color: ${COLORS.black};
+  }
+  ${slickSlider}
 `;
 
 
-//   ::selection {
-//     background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
-//     color: ${COLORS.white};
-//   }
-
-//   ::-moz-selection {
-//     background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
-//     color: ${COLORS.white};
-//   }
-// `;

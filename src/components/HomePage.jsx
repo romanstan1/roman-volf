@@ -1,64 +1,80 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Section from "./Section";
-import { H1 } from "./Text";
+import { P1 , P2 } from "./Text";
+import { greenBlack, vividOrange, pastelOne, pastelTwo } from "../images";
 
-import VO3 from "../assets/vividorange-3.JPG";
-import VO4 from "../assets/vividorange-4.JPG";
-
-
-const CarouselWrapper = styled.div`
+const CarouselInner = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-grow: 0;
-  height: 500px;
-  width: 100%; 
+  height: 420px;
+  width: 100%;
+  overflow-x: scroll;
   img {
-    margin: 20px;
+    margin: 0 20px;
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:last-of-type {
+      margin-right: 50px;
+      padding-right: 50px;
+    }
   }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+`;
+
+const CarouselWrapper = styled.div`
+  /* display: flex; */
 `;
 
 const Landscape = styled.img`
   width:${(props => props.width ? props.width : 400)}px;
-  /* height: auto; */
 `;
 
 const Portrait = styled.img`
-  /* width: auto; */
   height:${(props => props.height ? props.height : 400)}px;
- 
+`;
+
+const Name = styled(P1)`
+  line-height: 2rem;
+`;
+
+const Size = styled(P2)`
+  line-height: 2rem;
 `;
 
 
-const Carousel = ({ images }) => {
+
+const Carousel = ({ images, name, size }) => {
   return (
     <CarouselWrapper>
-      {images.map(item => {
-        if(item.size === "portrait") {
-          return <Portrait src={item.image} height={item.height} key={item.image} alt="" />;
-        }
-        return <Landscape src={item.image} width={item.width} key={item.image} alt="" />;
-      })}
+      <CarouselInner>
+        {images.map(item => {
+          if(item.orient === "portrait") {
+            return <Portrait src={item.image} height={item.height} key={item.image} alt="" />;
+          }
+          return <Landscape src={item.image} width={item.width} key={item.image} alt="" />;
+        })}
+      </CarouselInner>
+      <Name>Name goes here</Name>
+      <Size>Size goes here</Size>
+
     </CarouselWrapper>
   );
 };
 
-const vividOrange = [
-  { 
-    image: VO3, 
-    size:"landscape", 
-    // width: 500,
-  },
-  { 
-    image: VO4, 
-    size:"portrait", 
-  }
-];
-
 const Home = () => {
   return (
-    <Section minHeight>
+    <Section minHeight bottomPadding>
+      <Carousel images={greenBlack} /> 
+      <Carousel images={pastelOne} /> 
+      <Carousel images={pastelTwo} /> 
       <Carousel images={vividOrange} /> 
     </Section>
   );

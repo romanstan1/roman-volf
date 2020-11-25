@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { Link, useLocation } from "react-router-dom";
+import COLORS from "../styles/colors"; 
 
 import Section from "./Section";
 
@@ -8,6 +9,20 @@ const Wrapper = styled.div`
   display: flex;
   height: 70px;
   align-items: center;
+  margin: 0 auto;
+`;
+
+const Outer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: ${COLORS.beige};
+`;
+
+const Spacer = styled.div`
+  height: 70px;
 `;
 
 const Logo = styled(Link)`
@@ -45,18 +60,23 @@ const Header = () => {
     return pathname === `/${val}`? "true" : undefined; 
   };
   return  (
-    <Section>
-      <Wrapper>
-        <Logo to="/">
-          Roman Volf
-        </Logo>
-        <Nav>
-          <NavLink active={isActive("")} to="/">Works</NavLink>
-          <NavLink active={isActive("statement")} to="/statement">Statement</NavLink>
-          <NavLink active={isActive("contact")} to="/contact">Contact</NavLink>
-        </Nav>
-      </Wrapper>
-    </Section>
+    <>
+      <Outer>
+        <Section>
+          <Wrapper>
+            <Logo to="/">
+              Roman Volf
+            </Logo>
+            <Nav>
+              <NavLink active={isActive("")} to="/">Works</NavLink>
+              <NavLink active={isActive("statement")} to="/statement">Statement</NavLink>
+              <NavLink active={isActive("contact")} to="/contact">Contact</NavLink>
+            </Nav>
+          </Wrapper>
+        </Section>
+      </Outer>
+      <Spacer />
+    </>
   );
 };
 

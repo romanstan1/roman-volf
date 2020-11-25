@@ -1,9 +1,9 @@
 const breakpoints = {
-  extraSmall: 410,
+  xsmall: 410,
   small: 640,
   medium: 768,
   large: 1024,
-  extraLarge: 1200,
+  xlarge: 1200,
   huge: 1600,
 };
 

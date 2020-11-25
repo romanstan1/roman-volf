@@ -30,8 +30,10 @@ const COLORS = {
   grey: "#F5F5F5",
   grey02: "#adb0be",
   grey03: "#cccbc8",
-  yellow: "#FFC238",
-  beige: "#f3f2ef",
+  // yellow: "#FFC238",
+  yellow: "#fff448",
+  // beige: "#f3f2ef",
+  beige: "#fffefa",
 };
 
 export const colorFinder = color => COLORS[color];
