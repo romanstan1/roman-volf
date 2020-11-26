@@ -1,5 +1,6 @@
 import React, { useEffect, useState , useRef } from "react";
 import styled, { css } from "styled-components";
+import smoothscroll from "smoothscroll-polyfill"; 
 import { P1 , P3 } from "./Text";
 import COLORS from "../styles/colors"; 
 
@@ -106,14 +107,13 @@ const Carousel = ({ setModalImg,  images, name, size }) => {
   const scroll = (index) => {
     const carouselRefCurrent = carouselRef.current;
     // carouselRefCurrent.addEventListener("scroll", scroll);
-    console.log("carouselRef:", carouselRef);
-
     const fullWidth = carouselRefCurrent.scrollWidth;
 
-    console.log("fullWidth:", fullWidth);
     const unit = (fullWidth / images.length);
     const distance = (unit * index) - (unit / 2);
 
+    // safari, ie & edge polyfill
+    smoothscroll.polyfill();
     carouselRef.current.scrollTo({
       top: 0,
       left: distance,

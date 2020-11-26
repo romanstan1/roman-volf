@@ -7,12 +7,19 @@ import COLORS, { hexToRGBA, cssColor } from "../styles/colors";
 
 const animation = keyframes`
   0%{
-    transform: translate(-50%, -50%) scale(0.7);
-    opacity: 0.4;
+    opacity: 0;
   }
   100%{
-    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
+  }
+`;
+
+const hideanimation = keyframes`
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
   }
 `;
 
@@ -23,8 +30,20 @@ const ModalWrapper = styled.div`
   z-index: 20;
   width: 100%;
   height: 100%;
-  background: ${cssColor(hexToRGBA(COLORS.white, 0.7))};
+  background: ${cssColor(hexToRGBA(COLORS.black, 0.9))};
   cursor: pointer;
+  ${props =>
+    props.show &&
+    css`
+      animation: ${animation} 0.2s linear;
+      animation-fill-mode: forwards;
+    `};
+  ${props =>
+    props.hide &&
+    css`
+      animation: ${hideanimation} 0.2s linear;
+      animation-fill-mode: forwards;
+    `};
 `;
 
 
@@ -32,21 +51,31 @@ const ModalImg = styled.img`
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 70vh;
-  opacity: 0.4;
-  transform: translate(-50%, -50%) scale(0.7);
-  ${props =>
-    props.show &&
-    css`
-      animation: ${animation} 0.2s ease;
-      animation-fill-mode: forwards;
-    `};
+  height: 80vh;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 `;
 
+
+const Modal = ({ startAnimation, hideAnimation,  hideModal, modalImg }) => {
+  
+  return(
+    <ModalWrapper
+      show={startAnimation}
+      hide={hideAnimation}
+      onClick={hideModal}
+    >
+      <ModalImg src={modalImg} />
+    </ModalWrapper>
+  );
+};
+
+const MemoizedModal = React.memo(Modal);
 
 const Home = () => {
   const [modalImg, setModalImg] = useState(null);
   const [startAnimation, setStartAnimation] = useState(false);
+  const [hideAnimation, setHideAnimation] = useState(false);
   
   useEffect(()=>{
     if(modalImg) {
@@ -58,36 +87,47 @@ const Home = () => {
     }
   },[modalImg]);
 
+  const hideModal = () => {
+    setHideAnimation(true);
+    setTimeout(() => {
+      setHideAnimation(false);
+      setModalImg(null);
+    }, 220);
+  };
+
   return (
     <>
-      {modalImg && 
-        <ModalWrapper show={startAnimation} onClick={() => setModalImg(null)}>
-          <ModalImg show={startAnimation} src={modalImg} />
-        </ModalWrapper>}
+      {modalImg && startAnimation &&
+        <MemoizedModal
+          startAnimation={startAnimation}
+          hideAnimation={hideAnimation}
+          hideModal={hideModal}
+          modalImg={modalImg}
+        />}
       <Section minHeight bottomPadding topPadding>
         <Carousel
           setModalImg={setModalImg}
           images={greenBlack} 
           name="Black Green"
-          size="Oil & chalk on canvas. 70cm x 70cm"
+          size="Oil & chalk on canvas. 70 x 70cm"
         /> 
         <Carousel
           setModalImg={setModalImg} 
           images={pastelOne}
           name="Lemon Ultramarine"
-          size="Oil on canvas. 100cm x 100cm"
+          size="Oil on canvas. 75 x 90cm"
         /> 
         <Carousel
           setModalImg={setModalImg}
           images={pastelTwo}
           name="Peach Green"
-          size="Oil & chalk on canvas. 100cm x 100cm"
+          size="Oil & chalk on canvas. 75 x 100cm"
         /> 
         <Carousel
           setModalImg={setModalImg}
           images={vividOrange}
           name="Vivid Primary"
-          size="Oil & chalk on canvas. 100cm x 100cm"
+          size="Oil & chalk on canvas. 70 x 90cm"
         /> 
       </Section>
     </>

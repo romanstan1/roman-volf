@@ -10,6 +10,7 @@
     "react-scripts": "3.2.0",
     "react-slick": "^0.27.13",
     "serve": "^11.3.2",
+    "smoothscroll-polyfill": "^0.4.4",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
