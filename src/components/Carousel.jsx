@@ -1,8 +1,9 @@
-import React, { useEffect, useState , useRef } from "react";
+import React, { useState , useRef } from "react";
 import styled, { css } from "styled-components";
 import smoothscroll from "smoothscroll-polyfill"; 
 import { P1 , P3 } from "./Text";
 import COLORS from "../styles/colors"; 
+import useInview from "../utils/useInview"; 
 
 const CarouselInner = styled.div`
   display: flex;
@@ -28,12 +29,20 @@ const CarouselWrapper = styled.div`
 const Inner = styled.img`
   height: 350px;
   margin: 0 15px;
-  transition: 0.2s ease;
+
+  transition: height 0.2s ease, opacity 1s ${(props => props.delay)}s ease-out;
   filter: grayscale(0%);
+  opacity: 0;
+  /* transition-delay: opacity 2s; */
   ${(props => !props.active &&
     css`
       filter: grayscale(100%);
       height: 280px;
+    `)
+  }
+  ${(props => props.show &&
+    css`
+      opacity: 1;
     `)
   }
   &:first-of-type {
@@ -95,9 +104,29 @@ const Dot = styled.div`
   }
 `;
 
+const ItemInner = ({ active, i, item, setModalImg, handleClick }) => {
+  const [inViewRef, inView] = useInview(true);
+    return(
+      <Inner
+        ref={inViewRef}
+        show={inView}
+        delay={i * 0.3}
+        active={i === active}
+        src={item.image} 
+        width={item.width}
+        alt=""
+        onClick={() => setModalImg(item.image)}
+        onMouseEnter={() => handleClick(i)}
+      />
+    );
+
+};
+
 const Carousel = ({ setModalImg,  images, name, size }) => {
   const [active, setActive] = useState(0);
   const carouselRef = useRef();
+  
+
   // useEffect(() => {
   //   items.addEventListener("touchstart", dragStart);
   //   items.addEventListener("touchend", dragEnd);
@@ -152,14 +181,13 @@ const Carousel = ({ setModalImg,  images, name, size }) => {
       <CarouselInner ref={carouselRef}>
         {images.map((item, i) => {
           return (
-            <Inner
+            <ItemInner
               key={item.image} 
-              active={i === active}
-              src={item.image} 
-              width={item.width}
-              alt=""
-              onClick={() => setModalImg(item.image)}
-              onMouseEnter={() => handleClick(i)}
+              active={active}
+              item={item} 
+              i={i}
+              setModalImg={setModalImg}
+              handleClick={handleClick}
             />
             );
         })}
