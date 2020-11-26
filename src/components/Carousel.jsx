@@ -11,7 +11,7 @@ const CarouselInner = styled.div`
   height: 420px;
   width: 100%;
   flex-shrink: 1;
-  overflow-x: scroll;
+  overflow-x: hidden;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -39,8 +39,8 @@ const Inner = styled.img`
     margin-left: 0;
   }
   &:last-of-type {
-    margin-right: 250px;
-    padding-right: 350px;
+    /* margin-right: 250px; */
+    padding-right: 50px;
   }
   cursor: pointer;
 `;
@@ -61,7 +61,6 @@ const LabelWrapper = styled.div`
   align-items: flex-start;
   width: 400px;
 `;
-
 
 const DotsWrapper = styled.div`
   display: flex;
@@ -84,55 +83,16 @@ const Dot = styled.div`
   border-radius: 50%;
   transition: 0.1s ease;
   div {
+    background: ${(props => props.active ? COLORS.black : "transparent")};
     border-radius: 50%;
-    background: ${COLORS.black};
-    height: 5px;
-    width: 5px;
+    height: 6px;
+    width: 6px;
+    border: 1px solid ${COLORS.black};
   }
   &:hover {
     border-color: ${COLORS.black};
   }
 `;
-
-let posX1 = 0;
-let posX2 = 0;
-let posInitial;
-let posFinal;
-const threshold = 100;
-
-function dragStart (e, items) {
-  e.preventDefault();
-  posInitial = items.offsetLeft;
-  
-  if (e.type === "touchstart") {
-    posX1 = e.touches[0].clientX;
-  } else {
-    posX1 = e.clientX;
-
-  }
-}
-
-function dragAction (e, items) {
-  if (e.type === "touchmove") {
-    posX2 = posX1 - e.touches[0].clientX;
-    posX1 = e.touches[0].clientX;
-  } else {
-    posX2 = posX1 - e.clientX;
-    posX1 = e.clientX;
-  }
-  items.style.left = `${items.offsetLeft - posX2  }px`;
-}
-  
-function dragEnd (e, items) {
-  posFinal = items.offsetLeft;
-  if (posFinal - posInitial < -threshold) {
-    // shiftSlide(1, "drag");
-  } else if (posFinal - posInitial > threshold) {
-    // shiftSlide(-1, "drag");
-  } else {
-    items.style.left = `${posInitial  }px`;
-  }
-}
 
 const Carousel = ({ setModalImg,  images, name, size }) => {
   const [active, setActive] = useState(0);
@@ -143,19 +103,48 @@ const Carousel = ({ setModalImg,  images, name, size }) => {
   //   items.addEventListener("touchmove", dragAction);
   // },[innerRef])
 
-  const onScroll = (e) => {
-    console.log("e:", e);
-    carouselRef.current.scrollTo(0,0);
+  const scroll = (index) => {
+    const carouselRefCurrent = carouselRef.current;
+    // carouselRefCurrent.addEventListener("scroll", scroll);
+    console.log("carouselRef:", carouselRef);
+
+    const fullWidth = carouselRefCurrent.scrollWidth;
+
+    console.log("fullWidth:", fullWidth);
+    const unit = (fullWidth / images.length);
+    const distance = (unit * index) - (unit / 2);
+
+    carouselRef.current.scrollTo({
+      top: 0,
+      left: distance,
+      behavior: "smooth",
+    });
+  };
+  
+  const handleClick = (index) => {
+    setActive(index);
+    scroll(index);
   };
 
-  useEffect(() => {
-    carouselRef.current.scrollTo(0,0);
-    const carouselRefCurrent = carouselRef.current;
-    carouselRefCurrent.addEventListener("scroll", onScroll);
-    return () => {
-      carouselRefCurrent.removeEventListener("scroll", onScroll);
-    };
-  }, []); // eslint-disable-line
+
+  // useEffect(() => {
+  //   const carouselRefCurrent = carouselRef.current;
+  //   // carouselRefCurrent.addEventListener("scroll", onScroll);
+  //   console.log("carouselRef:", carouselRef);
+  //   const fullWidth = carouselRefCurrent.scrollWidth;
+
+  //   const children = Array.from(carouselRefCurrent.children);
+
+  //   children.forEach(ele => {
+  //     console.log("ele.scrollLeft:", ele);
+  //     console.log("ele.offsetLeft:", ele.offsetLeft);
+  //   });
+
+  //   // console.log("distanceScrolled:", distanceScrolled);
+  //   return () => {
+  //     // carouselRefCurrent.removeEventListener("scroll", onScroll);
+  //   };
+  // }, []);
 
 
   return (
@@ -170,15 +159,15 @@ const Carousel = ({ setModalImg,  images, name, size }) => {
               width={item.width}
               alt=""
               onClick={() => setModalImg(item.image)}
-              onMouseEnter={() => setActive(i)}
+              onMouseEnter={() => handleClick(i)}
             />
             );
         })}
       </CarouselInner>
       <DotsWrapper>
-        {images.map((item) => {
+        {images.map((item, i) => {
           return (
-            <Dot key={item.image}>
+            <Dot active={i === active} key={item.image} onClick={() => handleClick(i)}>
               <div />
             </Dot>);
         })}
