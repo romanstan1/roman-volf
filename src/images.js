@@ -5,6 +5,11 @@ import VO3 from "./assets/vividorange-3.JPG";
 import VO4 from "./assets/vividorange-4.JPG";
 import VO5 from "./assets/vividorange-5.JPG";
 
+import VT1 from "./assets/vividturquoise-1.JPG";
+import VT2 from "./assets/vividturquoise-2.JPG";
+import VT3 from "./assets/vividturquoise-3.JPG";
+import VT4 from "./assets/vividturquoise-4.JPG";
+
 import GB1 from "./assets/greenblack-1.JPG";
 import GB2 from "./assets/greenblack-2.JPG";
 import GB3 from "./assets/greenblack-3.JPG";
@@ -40,6 +45,24 @@ export const vividOrange = [
     orient:"landscape", 
     width: 450,
   }
+];
+export const vividTurquoise = [
+  { 
+    image: VT1, 
+    orient:"landscape", 
+  },
+  { 
+    image: VT2, 
+    orient:"landscape", 
+  },
+  { 
+    image: VT3, 
+    orient:"landscape", 
+  },
+  { 
+    image: VT4, 
+    orient:"portrait", 
+  },
 ];
 
 export const greenBlack = [

@@ -25,18 +25,27 @@ const StatementPage = () => {
     <Section minHeight>
       <Heading>Statement</Heading>
       <Para>
-        Hi everyone and thank you for taking time out 
-        of your day to take a look at how I spend mine. 
-        I am a designer/artist person with a over 20 years
-        experience under my belt. I’ve worked 
-        on ads for Nissan, posters for movies, reports for lawyers 
-        and logos for businesses. I’m always working on something new.
-        If you are interested in hiring me for 
-        freelance design work please feel free to email me.
-        I’m always excited to talk about new potential design projects.
-        If you are interested in staying up
-        to date with new poster releases please sign up for my mailing list or 
-        check out any of my social media outlets.
+        My most recent work explores depth perception. 
+        By creating a sense of three dimensionality using
+        a range of contrasting techniques,
+        most notably linear perspective. 
+        <br />
+        <br />
+        Within these paintings, the planes of 
+        tessellating shapes aim to contradict one another, 
+        leading the eye down a three dimensional
+        path, only to then break this momentum. 
+        <br />
+        <br />
+        Additionally, the ordered geometric design allows 
+        precedence to be given to the colour relationships used throughout the 
+        composition. These colours 
+        sometimes worth with, and sometimes work against the 
+        three dimensional illusion. 
+        <br />
+        <br />
+        My most notable influences are 
+        from Rothko, Matisse, and M.C. Escher.  
       </Para>
     </Section>
   );

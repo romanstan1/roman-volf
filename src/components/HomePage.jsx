@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import Section from "./Section";
 import Carousel from "./Carousel";
-import { greenBlack, vividOrange, pastelOne, pastelTwo } from "../images";
+import { greenBlack, vividOrange, pastelOne, pastelTwo, vividTurquoise } from "../images";
 import COLORS, { hexToRGBA, cssColor } from "../styles/colors"; 
 import BREAKPOINTS from "../styles/breakpoints";
 
@@ -128,32 +128,40 @@ const Home = () => {
           modalImg={modalImg}
         />}
       <Section minHeight bottomPadding topPadding>
+        
+        <Carousel
+          isMobile={isMobile}
+          setModalImg={setModalImg}
+          images={vividTurquoise} 
+          name="Vivid Turquoise"
+          size="Oil on canvas. 60 x 90cm"
+        /> 
         <Carousel
           isMobile={isMobile}
           setModalImg={setModalImg}
           images={greenBlack} 
-          name="Black Green"
+          name="Black and Green"
           size="Oil & chalk on canvas. 70 x 70cm"
         /> 
         <Carousel
           isMobile={isMobile}
           setModalImg={setModalImg} 
           images={pastelOne}
-          name="Lemon Ultramarine"
+          name="Lemon and Ultramarine"
           size="Oil on canvas. 75 x 90cm"
         /> 
         <Carousel
           isMobile={isMobile}
           setModalImg={setModalImg}
           images={pastelTwo}
-          name="Peach Green"
+          name="Peach and Green"
           size="Oil & chalk on canvas. 75 x 100cm"
         /> 
         <Carousel
           isMobile={isMobile}
           setModalImg={setModalImg}
           images={vividOrange}
-          name="Vivid Primary"
+          name="Vivid Orange"
           size="Oil & chalk on canvas. 70 x 90cm"
         /> 
       </Section>
