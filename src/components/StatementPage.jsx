@@ -2,15 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import Section from "./Section";
 import { H1, P1 } from "./Text";
+import BREAKPOINTS from "../styles/breakpoints";
 
 const Para = styled(P1)`
   margin: 100px 7vw 50px 7vw;
   line-height: 2rem;
+  @media screen and (max-width: ${BREAKPOINTS.medium}px) {
+    margin: 50px 5px 50px 5px;
+  }
 `;
 
 const Heading = styled(H1)`
   margin: 150px 7vw 0px 7vw;
   line-height: 2rem;
+  @media screen and (max-width: ${BREAKPOINTS.medium}px) {
+    margin: 0px 5px 50px 5px;
+  }
 `;
 
 const StatementPage = () => {

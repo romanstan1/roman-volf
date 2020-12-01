@@ -113,6 +113,7 @@ const NavLink = styled(Link)`
   opacity: 0.7;
   transition: 0.3s ease-in-out;
   font-weight: 500;
+  outline: none;
   ${(props) => props.active && 
     css`
       opacity: 1;

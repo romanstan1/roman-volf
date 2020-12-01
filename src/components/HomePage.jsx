@@ -31,6 +31,7 @@ const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   background: ${cssColor(hexToRGBA(COLORS.black, 0.9))};
+  outline: none
   cursor: pointer;
   ${props =>
     props.show &&
@@ -76,6 +77,17 @@ const Home = () => {
   const [modalImg, setModalImg] = useState(null);
   const [startAnimation, setStartAnimation] = useState(false);
   const [hideAnimation, setHideAnimation] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 768);
+    }
+    setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setIsMobile]);
   
   useEffect(()=>{
     if(modalImg) {
@@ -106,24 +118,28 @@ const Home = () => {
         />}
       <Section minHeight bottomPadding topPadding>
         <Carousel
+          isMobile={isMobile}
           setModalImg={setModalImg}
           images={greenBlack} 
           name="Black Green"
           size="Oil & chalk on canvas. 70 x 70cm"
         /> 
         <Carousel
+          isMobile={isMobile}
           setModalImg={setModalImg} 
           images={pastelOne}
           name="Lemon Ultramarine"
           size="Oil on canvas. 75 x 90cm"
         /> 
         <Carousel
+          isMobile={isMobile}
           setModalImg={setModalImg}
           images={pastelTwo}
           name="Peach Green"
           size="Oil & chalk on canvas. 75 x 100cm"
         /> 
         <Carousel
+          isMobile={isMobile}
           setModalImg={setModalImg}
           images={vividOrange}
           name="Vivid Primary"
