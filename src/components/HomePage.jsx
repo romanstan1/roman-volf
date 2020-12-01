@@ -4,6 +4,7 @@ import Section from "./Section";
 import Carousel from "./Carousel";
 import { greenBlack, vividOrange, pastelOne, pastelTwo } from "../images";
 import COLORS, { hexToRGBA, cssColor } from "../styles/colors"; 
+import BREAKPOINTS from "../styles/breakpoints";
 
 const animation = keyframes`
   0%{
@@ -52,9 +53,19 @@ const ModalImg = styled.img`
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 80vh;
+  height: 90vh;
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
+  
+  @media screen and (max-width: ${BREAKPOINTS.medium}px) {
+    height: unset;
+    width: 90vw;
+  }
+
+  @media screen and (max-height: ${BREAKPOINTS.small}px){
+    height: 95vh;
+    width: unset;
+  }
 `;
 
 
