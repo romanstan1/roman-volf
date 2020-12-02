@@ -1,9 +1,7 @@
 
 import VO1 from "./assets/vividorange-1.JPG";
-import VO2 from "./assets/vividorange-2.JPG";
 import VO3 from "./assets/vividorange-3.JPG";
 import VO4 from "./assets/vividorange-4.JPG";
-import VO5 from "./assets/vividorange-5.JPG";
 import VOM from "./assets/vividorange-main.jpg";
 
 import VT1 from "./assets/vividturquoise-1.JPG";
@@ -14,7 +12,6 @@ import VTM from "./assets/vividturquoise-main.jpg";
 
 import GB1 from "./assets/greenblack-1.JPG";
 import GB2 from "./assets/greenblack-2.JPG";
-import GB3 from "./assets/greenblack-3.JPG";
 import GB4 from "./assets/greenblack-4.JPG";
 import GBM from "./assets/greenblack-main.jpg";
 
