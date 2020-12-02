@@ -147,21 +147,21 @@ const Home = () => {
           isMobile={isMobile}
           setModalImg={setModalImg} 
           images={pastelOne}
-          name="Lemon and Ultramarine"
+          name="Peach and Ultramarine"
           size="Oil on canvas. 75 x 90cm"
         /> 
         <Carousel
           isMobile={isMobile}
           setModalImg={setModalImg}
           images={pastelTwo}
-          name="Peach and Green"
+          name="Pastel Green"
           size="Oil & chalk on canvas. 75 x 100cm"
         /> 
         <Carousel
           isMobile={isMobile}
           setModalImg={setModalImg}
           images={vividOrange}
-          name="Vivid Orange"
+          name="Matisse's Orange"
           size="Oil & chalk on canvas. 70 x 90cm"
         /> 
       </Section>

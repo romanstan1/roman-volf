@@ -13,7 +13,7 @@ const Para = styled(P1)`
 `;
 
 const Heading = styled(H1)`
-  margin: 150px 7vw 0px 7vw;
+  margin: 50px 7vw 0px 7vw;
   line-height: 2rem;
   @media screen and (max-width: ${BREAKPOINTS.medium}px) {
     margin: 0px 5px 50px 5px;
@@ -26,7 +26,7 @@ const StatementPage = () => {
       <Heading>Statement</Heading>
       <Para>
         My most recent work explores depth perception. 
-        By creating a sense of three dimensionality using
+        I have tried to create a sense of three dimensionality using
         a range of contrasting techniques,
         most notably linear perspective. 
         <br />
@@ -40,7 +40,7 @@ const StatementPage = () => {
         Additionally, the ordered geometric design allows 
         precedence to be given to the colour relationships used throughout the 
         composition. These colours 
-        sometimes worth with, and sometimes work against the 
+        sometimes work with, and sometimes work against the 
         three dimensional illusion. 
         <br />
         <br />
