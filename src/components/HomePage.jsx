@@ -155,7 +155,7 @@ const Home = () => {
           setModalImg={setModalImg}
           images={pastelTwo}
           name="Pastel Green"
-          size="Oil & chalk on canvas. 75 x 100cm"
+          size="Oil & chalk on canvas. 75 x 90cm"
         /> 
         <Carousel
           isMobile={isMobile}
