@@ -5,6 +5,7 @@ import COLORS, { hexToRGBA, cssColor } from "../styles/colors";
 import BREAKPOINTS from "../styles/breakpoints";
 import Section from "./Section";
 import { styles } from "./Text";
+import FONTS from "../styles/fonts";
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ const Spacer = styled.div`
 `;
 
 const Logo = styled(Link)`
-  font-family: 'Bebas Neue';
+  font-family: ${FONTS.bebasNeue};
   font-size: 48px;
 `;
 

@@ -1,9 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import COLORS, { hexToRGBA, cssColor } from "./colors"; 
 // import slickSlider from "./slick-slider";
+import FONTS, { loadFonts } from "./fonts";
 
 export default createGlobalStyle`
- 
+  ${loadFonts};
+  
   html, body {
     width: 100%;
     margin: 0;
@@ -12,7 +14,7 @@ export default createGlobalStyle`
     transition: background-color 1s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Spartan';
+    font-family: ${FONTS.spartan};
     background-color: ${COLORS.beige};
       /* The emerging W3C standard
       that is currently Firefox-only */
@@ -39,7 +41,7 @@ export default createGlobalStyle`
   }
 
   input, textarea {
-    font-family: 'Spartan';
+    font-family: ${FONTS.spartan};
   }
 
   * {
@@ -62,7 +64,7 @@ export default createGlobalStyle`
     padding: 0;
     background-color: transparent;
     border: none;
-    font-family: 'Spartan';
+    font-family: ${FONTS.spartan};
   }
 
   ul, ol {
