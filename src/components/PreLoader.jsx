@@ -85,9 +85,12 @@ const Dots = styled.div`
   }
 `;
 
+
 const Preloader = () => {
   const [phase, setPhase] = useState(1);
   const circleRef = useRef(null);
+
+
 
   useEffect(() => {
     // eslint-disable-next-line
@@ -108,6 +111,7 @@ const Preloader = () => {
 
     const t3 = setTimeout(() => {
       setPhase(3);
+      window.scrollTo(0, 0);
     }, 2800);
 
     return () => {
