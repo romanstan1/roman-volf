@@ -23,21 +23,10 @@ export default createGlobalStyle`
     }
 
     /* Works on Chrome/Edge/Safari */
-    *::-webkit-scrollbar {
-      width: 5px;
-    }
-    *::-webkit-scrollbar-track {
-      background: ${COLORS.beige};
-    }
-    *::-webkit-scrollbar-thumb {
-      background-color:  ${COLORS.black};
-      border-radius: 0px;
-      border: 0px solid ${COLORS.black};
-    }
+    
   }
   html {
     overflow-y: scroll;
-    background-color: ${COLORS.yellow};
   }
 
   input, textarea {
@@ -83,12 +72,12 @@ export default createGlobalStyle`
     padding: 0;
   }
   ::selection {
-    background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
+    background-color: ${cssColor(hexToRGBA(COLORS.turquoise, 0.99))};
     color: ${COLORS.black};
   }
 
   ::-moz-selection {
-    background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};
+    background-color: ${cssColor(hexToRGBA(COLORS.turquoise, 0.99))};
     color: ${COLORS.black};
   }
   :focus{background: transparent;}

@@ -4,6 +4,7 @@ import GlobalStyles from "./styles/global";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import PreLoader from "./components/PreLoader";
 
 import Home from "./pages/Home";
 import Contact from "./pages/Contact"; 
@@ -22,6 +23,7 @@ const App = () => {
         <Route component={ErrorPage} />
       </Switch>
       <Footer />
+      <PreLoader />
     </>
   );
 };

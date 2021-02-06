@@ -59,13 +59,16 @@ const ModalImg = styled.img`
   
   @media screen and (max-width: ${BREAKPOINTS.medium}px) {
     height: unset;
-    width: 90vw;
+    width: 92vw;
   }
 
-  @media screen and (max-height: ${BREAKPOINTS.small}px){
+  /* @media screen and (max-height: ${BREAKPOINTS.small}px){
     height: 95vh;
     width: unset;
-  }
+
+    height: unset;
+    width: 90vw;
+  } */
 `;
 
 

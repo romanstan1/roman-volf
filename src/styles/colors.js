@@ -30,6 +30,10 @@ const COLORS = {
   grey: "#F5F5F5",
   grey02: "#adb0be",
   grey03: "#cccbc8",
+  
+  turquoise: "#25F4EE",
+  red: "#FE2C55",
+
   // yellow: "#FFC238",
   yellow: "#fff448",
   // beige: "#f3f2ef",

@@ -35,7 +35,7 @@ const Email = styled.a`
     left: -10px;
     width: calc(100% + 20px);
     height: 3px;
-    background: ${COLORS.yellow};
+    background: ${COLORS.turquoise};
   }
   &:hover {
     div {

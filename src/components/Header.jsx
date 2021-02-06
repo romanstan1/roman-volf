@@ -130,7 +130,7 @@ const NavLink = styled(Link)`
     ${styles.h2};
     margin: 30px 15px;
     padding: 5px 5px;
-    :focus{background-color: ${cssColor(hexToRGBA(COLORS.yellow, 0.99))};}
+    :focus{background-color: ${cssColor(hexToRGBA(COLORS.turquoise, 0.99))};}
   }
 `;
 
